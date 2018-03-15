@@ -29,7 +29,7 @@ public class CreateContactActivity extends Activity {
 
     /**
      * Builds a new Business object and puts it in the database
-     * @param v
+     * @param v the view where the method was triggered
      */
     public void submitInfoButton(View v) {
         //each entry needs a unique ID

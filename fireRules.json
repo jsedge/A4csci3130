@@ -1,16 +1,31 @@
 {
   "rules": {
-    ".read": "true",
-    ".write": "true",
-    "contacts": {
-            "$contact": {
-                "name": {
-                    ".validate": "newData.isString() && newData.val().length < 50"
-                },
-                "email": {
-                    ".validate": "newData.isString() && newData.val().matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}$/i)"
-                }
-            }
-        }
+    ".read": true,
+    ".write": true,
+    "businesses":{
+      "$contact":{
+      	"number":{
+      		".validate": "newData.isString()&&newData.val().length===9"  
+     		},
+      	"name":{
+        	".validate":"newData.isString() && newData.val().length<48 && newData.val().length>2"
+      	},
+      	"business":{
+        	".validate":"newData.isString() && (newData.val()==='Fisher' || 
+          newData.val()==='Distributor' || newData.val()==='Processor'||newData.val()==='Fish Monger')"
+      	},
+      	"province":{
+        	".validate":"newData.isString() && (newData.val()==='AB'||newData.val()==='BC' ||
+          newData.val()==='MB'||newData.val()==='NB'||newData.val()==='NL'||newData.val()==='NS' ||
+            newData.val()==='NT'||newData.val()==='NU'||newData.val()==='ON'||newData.val()==='PE' ||
+            newData.val()==='QC'||newData.val()==='SK'||newData.val()==='YT'||newData.val()==='')"
+      	},
+      	"address":{
+        	".validate":"newData.isString() && newData.val().length<50"
+      	},
+        ".validate":"newData.hasChildren(['number','name','business'])"
+      }
+      
+    }
   }
 }

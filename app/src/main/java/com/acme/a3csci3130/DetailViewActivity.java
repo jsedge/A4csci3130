@@ -35,7 +35,7 @@ public class DetailViewActivity extends Activity {
 
     /**
      * Updates the information for a business and pushes it to firebase
-     * @param v
+     * @param v the view where the method was triggered
      */
     public void updateContact(View v){
         String id = receivedPersonInfo.uid;
@@ -49,20 +49,17 @@ public class DetailViewActivity extends Activity {
         Business person = new Business(personID,number, name,business,address,province);
 
         appState.firebaseReference.child(id).setValue(person);
+        finish();
     }
 
     /**
      * Removes a business from the database
-     * @param v
+     * @param v the view where the method was triggered
      */
     public void eraseContact(View v)
     {
         String id = receivedPersonInfo.uid;
-
         appState.firebaseReference.child(id).removeValue();
-
-
-
-
+        finish();
     }
 }
